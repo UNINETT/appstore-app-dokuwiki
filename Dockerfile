@@ -34,8 +34,8 @@ RUN    unzip /oauth.zip && mv dokuwiki-plugin-oauth-master /dokuwiki/lib/plugins
 RUN chown -R www-data:www-data /dokuwiki
 
 # Configure lighttpd
-ADD dokuwiki.conf /etc/lighttpd/conf-available/20-dokuwiki.conf
-RUN lighty-enable-mod dokuwiki fastcgi accesslog
+RUN lighty-enable-mod fastcgi accesslog
+ADD dokuwiki.conf /etc/lighttpd/lighttpd.conf
 RUN mkdir /var/run/lighttpd && chown www-data.www-data /var/run/lighttpd
 
 ADD run.sh ./
